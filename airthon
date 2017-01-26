@@ -1,0 +1,20 @@
+#!/usr/bin/python3
+import tkinter as tk
+
+root = tk.Tk()
+w, h = root.winfo_screenwidth(), root.winfo_screenheight()
+root.geometry("{}x{}+0+0".format(w, h - 100))
+root['bg'] = 'white'
+
+class Application(tk.Frame):
+
+    def __init__(self, master = None):
+        super().__init__(master)
+        c = tk.Canvas(master, width = w - 200, height = h - 150)
+        c.pack()
+        c['bg'] = 'black'
+        y = int(int(c['width']) / 2)
+        c.create_line(0, y, c['width'], y - 100, fill="#499042")
+
+app = Application(master = root)
+app.mainloop()
