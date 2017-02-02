@@ -13,8 +13,6 @@ class Application(tk.Frame):
         c = tk.Canvas(master, width = w - 200, height = h - 150)
         c.pack()
         c['bg'] = 'black'
-        y = int(int(c['width']) / 2)
-        c.create_line(0, y, c['width'], y - 100, fill="#499042")
 
 app = Application(master = root)
 app.mainloop()
