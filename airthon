@@ -1,18 +1,41 @@
 #!/usr/bin/python3
 import tkinter as tk
+import sys
+import os
 
-root = tk.Tk()
-w, h = root.winfo_screenwidth(), root.winfo_screenheight()
-root.geometry("{}x{}+0+0".format(w, h - 100))
-root['bg'] = 'white'
+if os.name == 'posix':
+    is_linux = 1
+else:
+    is_windows = 1
+
+def run_command_linux(command):
+    if is_linux:
+        os.system(command)
+        return 0
+    elif is_windows:
+        print('Windows')
+        return 1
+
+def run_command_windows(command):
+    if is_windows:
+        os.system(command)
+        return 0
+    elif is_linux:
+        print('Linux')
+        return 1
 
 class Application(tk.Frame):
 
     def __init__(self, master = None):
         super().__init__(master)
+        self.master.title('Airthon')
+        self.master.attributes('-zoomed', True)
+        self.master['bg'] = 'white'
+        w, h = root.winfo_screenwidth(), root.winfo_screenheight()
         c = tk.Canvas(master, width = w - 200, height = h - 150)
         c.pack()
         c['bg'] = 'black'
 
-app = Application(master = root)
-app.mainloop()
+root = tk.Tk()
+root_window = Application(master = root)
+root_window.mainloop()
