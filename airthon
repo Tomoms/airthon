@@ -1,5 +1,6 @@
 #!/usr/bin/python3
 import tkinter as tk
+import tkinter.ttk as ttk
 import sys
 import os
 
@@ -30,11 +31,16 @@ class Application(tk.Frame):
         super().__init__(master)
         self.master.title('Airthon')
         self.master.attributes('-zoomed', True)
-        self.master['bg'] = 'white'
+        self.master['bg'] = '#c3842a'
         w, h = root.winfo_screenwidth(), root.winfo_screenheight()
         c = tk.Canvas(master, width = w - 200, height = h - 150)
         c.pack()
         c['bg'] = 'black'
+        button_style = ttk.Style()
+        button_style.configure('Pulsanti.TButton', foreground = '#ffffff')
+        button_style.map('Pulsanti.TButton', background = [('active', '#ababab'), ('!active', '#5b5b63')])
+        b = ttk.Button(text = 'PROVA', style = 'Pulsanti.TButton')
+        b.pack()
 
 root = tk.Tk()
 root_window = Application(master = root)
